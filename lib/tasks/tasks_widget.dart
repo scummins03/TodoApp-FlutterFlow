@@ -154,16 +154,29 @@ class _TasksWidgetState extends State<TasksWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            await listViewTasksRecord.reference
-                                .update(createTasksRecordData(
-                              completed: true,
-                            ));
+                            context.pushNamed(
+                              'Details',
+                              queryParameters: {
+                                'taskDoc': serializeParam(
+                                  listViewTasksRecord,
+                                  ParamType.Document,
+                                ),
+                              }.withoutNulls,
+                              extra: <String, dynamic>{
+                                'taskDoc': listViewTasksRecord,
+                              },
+                            );
                           },
                           child: TaskWidget(
                             key: Key(
                                 'Key8be_${listViewIndex}_of_${listViewTasksRecordList.length}'),
                             tasksDoc: listViewTasksRecord,
-                            checkAction: () async {},
+                            checkAction: () async {
+                              await listViewTasksRecord.reference
+                                  .update(createTasksRecordData(
+                                completed: true,
+                              ));
+                            },
                           ),
                         );
                       },
