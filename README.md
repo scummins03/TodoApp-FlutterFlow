@@ -1,2 +1,7 @@
-# TodoApp-FlutterFlow
-Sully Cummins' ToDoApp Repository for CSC 305
+# ToDo
+
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.
